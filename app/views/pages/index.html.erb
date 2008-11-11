@@ -1,16 +1,20 @@
 <h1>Listing pages</h1>
 
+<br><br>
+
 <% for page in @pages %>
     <h2><%=h page.title %></h2>
     <p><%=h page.body %></p>
     <p><%=h page.published %></p>
-    <p><%= link_to 'Show', page %></p>
-    <p><%= link_to 'Edit', edit_page_path(page) %></p>
-    <p><%= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete %></p>
+
+    <span><%= link_to 'Show', page %></span> &nbsp; 
+    <span><%= link_to 'Edit', edit_page_path(page) %></span> &nbsp; 
+    <span><%= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete %></span>
+    
+    <hr />
 <% end %>
 
-<br />
+<br /><br>
 
-<hr />
 
 <%= link_to 'New page', new_page_path %>
