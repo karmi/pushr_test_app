@@ -2,7 +2,7 @@ set :application, "test_app"
 
 # = SCM
 set :scm, 'git'
-set :branch, "master"
+set :branch, "deploy"
 set :git_enable_submodules, 1
 set :repository,  "git://github.com/karmi/pushr_test_app.git"
 set :deploy_via, :remote_cache
