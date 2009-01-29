@@ -24,6 +24,14 @@ after "deploy:update_code" do
   run "ln -nfs #{shared_path}/production.sqlite3 #{release_path}/db/production.sqlite3"
 end
 
+before "deploy" do
+  system "rake test" or abort "[!] Tests failed, aborting deploy..."
+end
+
+task :tests do
+  system "rake test" or abort "[!] Tests failed, aborting deploy..."
+end
+
 # = Tasks
 # Let's do a "hard" restart (reaper really doesn't restart Mongrel...)
 namespace :deploy do
