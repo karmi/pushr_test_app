@@ -14,14 +14,22 @@ set :runner, "karmi"
 set :use_sudo, false
 
 # = IPs & Paths
-role :app, "karmi.cz"
-role :web, "karmi.cz"
-role :db,  "karmi.cz", :primary => true
+role :app, "xkarmi.cz"
+role :web, "xkarmi.cz"
+role :db,  "xkarmi.cz", :primary => true
 
 # = Hooks
 after "deploy:update_code" do
   run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   run "ln -nfs #{shared_path}/production.sqlite3 #{release_path}/db/production.sqlite3"
+end
+
+before "deploy" do
+  system "rake test" or abort "[!] Tests failed, aborting deploy..."
+end
+
+task :tests do
+  system "rake test" or abort "[!] Tests failed, aborting deploy..."
 end
 
 # = Tasks
