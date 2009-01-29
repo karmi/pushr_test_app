@@ -14,9 +14,9 @@ set :runner, "karmi"
 set :use_sudo, false
 
 # = IPs & Paths
-role :app, "xkarmi.cz"
-role :web, "xkarmi.cz"
-role :db,  "xkarmi.cz", :primary => true
+role :app, "karmi.cz"
+role :web, "karmi.cz"
+role :db,  "karmi.cz", :primary => true
 
 # = Hooks
 after "deploy:update_code" do
